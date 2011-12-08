@@ -1,0 +1,59 @@
+body
+{
+	text-align:center;
+	width:100%;
+	padding:0;
+	margin:0;
+}
+
+h1
+{
+	height:50px;
+	padding-top:10px;
+	width:100%;
+	font-size:30px;
+	border:0;
+	border-top:1px solid;
+	border-bottom:1px solid;
+}
+
+h2
+{
+	text-align:left;
+}
+
+
+
+#top
+{
+	margin:0;
+}
+
+#menu ul {
+	margin-left: 0;
+	padding-left: 0;
+	display: inline;
+	}
+
+#menu ul li
+{
+	height:30px;
+	padding-top:10px;
+	margin-top:5px;
+	border:1px solid;
+	display:inline-block;
+	list-style: none;
+	width:80%;
+}
+
+#firefox
+{
+	width:0;
+	height:0;
+}
+
+#thunder
+{
+	width:0;
+	height:0;
+}
