@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+	<head>
+		<title>Hockey Quizz</title>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<link href="css/desktop.css" rel="stylesheet" />
+	</head>
+	<body onload="getSize()">
+	<div id="wrapper">
+		<div id="header"></div>
+		<div id="main"></div>
+		<div id="footer">Maxime - Ayoub - Lo&#239;c | ISI Montr&#233;al</div>
+	</div>
+	<script type="text/javascript">
+	
+	var height = 0;
+	var width = 0;
+	var nbEquipe;
+	
+	
+
+	function getSize()
+	{
+		height = document.getElementById("main").offsetHeight;
+		width = document.getElementById("main").offsetWidth;
+		
+		nbEquipe = prompt("Entrez un nombre d'equipe","Nbre");
+		
+		alert("H :"+height+" W : "+width);
+		
+		var alpha = (height*width)/nbEquipe;
+		
+		alpha = Math.sqrt(alpha);
+		
+		var nbCase = width/alpha;
+		
+		alpha = Math.floor(alpha);
+		
+		alert(alpha);
+		
+		nbCase = parseInt(nbCase);
+		
+		var nbCaseH = nbEquipe/nbCase;
+		
+		nbCaseH = Math.ceil(nbCaseH);
+ 
+		alert("NbCase : "+nbCase+" nbCaseH : "+nbCaseH);
+	}
+	
+	function grid(nbEquipe,height,width)
+	{
+		
+	}
+	
+	</script>
+	</body>
+</html>

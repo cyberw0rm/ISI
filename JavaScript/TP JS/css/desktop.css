@@ -1,0 +1,132 @@
+body
+{
+	margin: 0;
+	font-size: 100%;
+	background-image: url('../img/background.jpg');
+	font-family: verdana, arial, 'TREBUCHET MS';
+}
+
+/* DEBUT POLICE PERSONNALISEE */
+@font-face 
+{
+    font-family: 'AlmonteSnow';
+    src: url('../fonts/almonte_snow-webfont-webfont.eot');
+    src: url('../fonts/almonte_snow-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/almonte_snow-webfont-webfont.woff') format('woff'),
+         url('../fonts/almonte_snow-webfont-webfont.ttf') format('truetype'),
+         url('../fonts/almonte_snow-webfont-webfont.svg#AlmonteSnow') format('svg');
+    /*font-weight: normal;
+    font-style: normal;*/
+
+}
+/* FIN POLICE PERSONNALISEE */
+
+#wrapper
+{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#header
+{
+	height: 80px;
+	background-image: url('../img/logo.png');
+	background-repeat: no-repeat;
+}
+
+#main
+{
+	border-radius: 15px;
+	border: 2px solid #ff6500;
+}
+
+#main
+{
+	height: 500px;
+}
+
+#playground
+{
+	float: left;
+	width: 80%;
+	height: 500px;
+}
+
+#dashboard
+{
+	float: right;
+	border-left: 1px solid #ff6500;
+	width: 15%;
+	height: 500px;
+}
+
+#dashboard ul
+{
+	list-style-type: none;
+}
+
+#dashboard > ul > li
+{
+	border: 1px solid #ff6500;
+	width: 80%;
+	text-align: center;
+	font-size:  1.75em;
+	background-color: #b9c8dd;
+	margin-bottom: 5px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	text-transform: uppercase;
+	font-family: 'AlmonteSnow', verdana, arial, 'TREBUCHET MS';
+	
+}
+
+#dashboard > ul > li> input[type="text"]
+{
+	border: 0;
+	text-align: center;
+	font-size:  1em;
+	background-color: transparent;
+	font-family: 'AlmonteSnow', verdana, arial, 'TREBUCHET MS';
+}
+
+#dashboard > ul > li > a
+{
+	color: #000;
+	text-decoration: none;
+}
+
+#sousMenu li
+{	
+	height: 40px;
+	padding-left: 30px;
+	display: inline-block;
+}
+
+#sousMenu li > a
+{	
+	color: #ff6500;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+
+.cartesJeu 
+{
+	display: inline;
+}
+
+.hideCartes
+{
+	display: inline;
+	z-index:2;
+}
+
+#footer
+{
+	text-align:center;
+	color: #ff6500;
+	font-size: 1.40em;
+	font-weight: bold;
+	font-family: 'AlmonteSnow', verdana, arial, 'TREBUCHET MS';
+}

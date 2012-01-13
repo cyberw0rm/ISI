@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+	<head>
+		<title>Hockey Quizz</title>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<link href="css/desktop.css" rel="stylesheet" />
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+	
+	var i = 0;
+	var height = 0;
+	var width = 0;
+	var nbEquipe = 10;
+	var extension = ".gif";
+	var cartes = [];
+	var nb = 0;
+	var start = false;
+	var time = 60;
+	var etatMenu =false;
+	var pause = false;
+	var timer = null;
+	var niveau = null;
+	var blink = false;
+	var idChoixMemorise = null;
+	var texte_tmp = null;
+	var icone_niveau = 'img/nhl_mini.png';
+	var limiteFacile = 18;
+	var limiteIntermediaire = 30;
+	var limiteDifficile = 60;
+
+	
+	function generateurNb()
+	{
+		var nbre = Math.random()*30;
+		nbre = Math.ceil(nbre);
+		return nbre;
+	}
+
+	function verificateurCartes(limite)
+	{
+	
+		limite = limite/2;
+	
+		for (var i=0; i<limite; i++)
+		{
+
+			nb = generateurNb(limite);
+			cartes[i]= nb;
+				
+				for (x=0; x<i; x++)
+				{
+					if (cartes[x]==nb) 
+					{
+						i=i-1;
+					} 
+				}
+		}
+		
+		for (var z=0; z<limite; z++)
+		{
+			var tmp = cartes[z];
+			tmp = tmp+extension;
+			cartes[z] = tmp;
+		}
+	
+	}
+	
+	function compteARebours()
+	{
+	
+			if (start == false)
+			{
+				start = true;
+			}
+			else if (time == 0)
+			{
+				document.getElementById("compteARebours").value = time;
+			}
+			else if (start == true && time != 0)
+			{
+				time = time-1;
+				document.getElementById("compteARebours").value = time;
+			
+			}
+			
+			
+			if (time <= 55)
+			{
+				
+				if (blink == false)
+				{
+					document.getElementById("compteARebours").style.color = "#ff0000";
+					document.getElementById("compteARebours").style.background = 'url("img/bombe.png")';
+					document.getElementById("compteARebours").style.backgroundRepeat = "no-repeat";
+					blink = true;
+				}
+				else
+				{
+					document.getElementById("compteARebours").style.color = "#000000";
+					document.getElementById("compteARebours").style.background = 'none';
+					blink = false;
+				}
+				
+			}
+
+	}
+	
+	function demarrerCompteARebours()
+	{
+		
+		if (timer == null)
+		{
+		timer = setInterval('compteARebours()',1000);
+		}
+		
+	}
+	
+	function stopCompteARebours()
+	{
+		clearInterval(timer);
+		timer = null;
+	}
+	
+	window.onload=menuNiveau;
+	
+	function menuNiveau()
+	{
+		if (etatMenu == false)
+		{
+			document.getElementById("sousMenu").style.display ='none';
+			document.getElementById("sousMenu").style.visibilty = 'hidden';
+			etatMenu = true;
+		}
+		else
+		{
+			document.getElementById("sousMenu").style.display ='block';
+			document.getElementById("sousMenu").style.visibilty = 'visible';
+			etatMenu = false;	
+		}
+	}
+
+	function niveauSelection(selection)
+	{
+	
+		switch (selection)
+		{
+		case 1 : effetSousMenu("niveauFacile");
+		jeu(limiteFacile);
+		break;
+		case 2 : effetSousMenu("niveauIntermediaire");
+		break;
+		case 3 : effetSousMenu("niveauDifficile");
+		break
+		default : effetSousMenu("niveauFacile");
+		}
+		
+	}
+	
+	function effetSousMenu(idChoix)
+	{
+			
+			if (idChoix != idChoixMemorise)
+			{
+				
+				if (idChoixMemorise != null)
+				{
+					document.getElementById(idChoixMemorise).style.background = 'none';
+				}
+				
+				idChoixMemorise = idChoix;
+
+				document.getElementById(idChoix).style.background = 'url("'+icone_niveau+'")';
+				document.getElementById(idChoix).style.backgroundRepeat = "no-repeat";
+			
+			}
+
+	}
+	
+	function jeu(limiteJeu)
+	{
+
+		for (var j=0; j<limiteJeu; j++) {
+		
+			var tmp = generateurNb();
+			tmp = tmp+extension;
+			document.getElementById("playground").innerHTML += '<div class="cartes"><img src="img/logos_LNH/'+tmp+'" alt=" " /></div>';
+		}
+	
+	}
+	
+	
+	
+	
+	</script>
+	</head>
+	<body>
+	<div id="wrapper">
+		<div id="header"></div>
+		<div id="main">
+			<div id="playground" onmouseOut="stopCompteARebours()" onmouseover="demarrerCompteARebours()"></div>
+			<div id="dashboard">
+				<ul>
+					<li><input type="text" value="0" id="compteARebours" readonly="readonly" /></li>
+					<li><a href="#" onclick="demarrerCompteARebours()">jouer</a></li>
+					<li>aide</li>
+					<li onmouseover="menuNiveau()">niveau</li>
+						<ul id="sousMenu">
+							<li id="niveauFacile"><a href="#" onclick="niveauSelection(1)">Facile</a></li>
+							<li id="niveauIntermediaire"><a href="#" onclick="niveauSelection(2)">Interm&#233;diaire</a></li>
+							<li id="niveauDifficile"><a href="#" onclick="niveauSelection(3)">Difficile</a></li>
+						</ul>
+				</ul>
+			</div>
+		</div>
+		<div id="footer">Maxime - Ayoub - Lo&#239;c | ISI Montr&#233;al</div>
+	</div>
+
+	</body>
+</html>
